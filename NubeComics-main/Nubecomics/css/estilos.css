@@ -1,0 +1,97 @@
+/* Fondo celeste para el área de cards en almacen */
+.fondo-celeste-cards {
+    background: #e3f6fc;
+    border-radius: 18px;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 0 2px 12px rgba(63,185,230,0.08);
+    margin-bottom: 2rem;
+}
+/* Cambia el color de la letra de los botones 'Agregar al carrito' */
+.agregar-carrito {
+    color: #ffffff !important; /* Cambia este valor por el color que desees, por ejemplo #000 para negro */
+}
+/*Selector de etiqueta*/
+body{
+    background-image: url("../img/Fondos/pattnube.jpg"); /* ruta de tu imagen */
+    background-repeat: repeat;  /* hace que se repita */
+    background-size: auto;      /* mantiene el tamaño original de la imagen */
+    background-attachment: fixed; /* opcional: hace que quede fijo al hacer scroll */
+}
+
+img{
+    display: block;
+    margin: auto;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    color: azure;
+    text-align: center;
+}
+
+p{
+    line-height: 2;
+}
+
+/*Selector tipo class*/
+.titulo{
+    color:purple
+}
+
+a{
+    color:rgb(83, 0, 131);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.carouserl-item img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    
+}
+
+.card img-top{
+    width: 100%;  /* se adapta al ancho del card */
+    height: auto; /* mantiene la proporción */
+}
+
+.card {
+    max-width: 200px;      /* ancho máximo de la tarjeta, para modificar el */
+    margin: auto;         /* centra la tarjeta horizontalmente */
+}
+
+/* Animación de zoom */
+@keyframes zoomIn {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Aplicar solo a la imagen activa del carousel */
+.carousel-item.active img {
+    animation: zoomIn 8s forwards; /* 8s de duración, mantiene el tamaño final */
+    transform-origin: center center; /* zoom desde el centro */
+}
+
+.buscar-btn {
+    background-color: #4ab0f3; /* color personalizado */
+    color: white;               /* color del texto */
+    border: none;               /* quitar borde si quieres */
+}
+
+.buscar-btn:hover {
+    background-color: #4ab0f3; /* color al pasar el mouse */
+}
+
+
+.navbar-custom .nav-link {
+    color: rgb(201, 220, 255); /* Cambia esto al color que quieras */
+}
+
+.navbar-custom .nav-link:hover {
+    color: rgb(0, 0, 0); /* Color al pasar el mouse */
+}

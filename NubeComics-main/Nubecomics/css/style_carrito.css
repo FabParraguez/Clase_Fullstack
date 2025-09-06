@@ -1,0 +1,141 @@
+/* Botón + azul encima de la imagen en recomendados */
+.btn-agregar-recomendado {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    background-color: #185a8d !important;
+    color: #fff !important;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+}
+.btn-agregar-recomendado:hover, .btn-agregar-recomendado:focus {
+    background-color: #14476b !important;
+    color: #fff !important;
+}
+/* Título recomendados: negro y negrita */
+.titulo-recomendados {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+/* Botón continuar personalizado: azul oscuro */
+.btn-continuar {
+    background-color: #185a8d !important; /* azul más oscuro */
+    color: #fff !important;
+    border: none;
+    transition: background 0.2s;
+}
+.btn-continuar:hover, .btn-continuar:focus {
+    background-color: #14476b !important;
+    color: #fff !important;
+}
+body{
+    background-image: url("../img/Fondos/pattnube.jpg"); /* ruta de tu imagen */
+    background-repeat: repeat;  /* hace que se repita */
+    background-size: auto;      /* mantiene el tamaño original de la imagen */
+    background-attachment: fixed; /* opcional: hace que quede fijo al hacer scroll */
+}
+.img-recomendado {
+  width: 100%;
+  height: 320px; /* Ajusta este valor si quieres otro alto */
+  object-fit: cover;
+  object-position: top;
+  cursor: pointer;
+}
+.tomo-popover {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  z-index: 10;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+.tomo-popover.show {
+  display: block;
+  animation: fadeIn 0.2s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Sidebar del carrito: más delgado y traslúcido */
+.carrito-sidebar {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 150px; /* Más pequeño */
+    max-width: 80vw;
+    background: rgba(255,255,255,0.4);
+    border-left: 2px solid #42b9e4;
+    border-radius: 32px 0 0 32px !important;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    z-index: 1050;
+    transition: transform 0.3s, width 0.3s, background 0.3s;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(6px);
+    overflow: hidden; /* Esto ayuda a que nada sobresalga */
+}
+
+.carrito-sidebar.minimizado {
+    transform: translateX(100%);
+}
+
+#maximizar-carrito {
+    z-index: 1051;
+}
+
+.carrito-header, .carrito-footer {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    
+}
+
+.carrito-body {
+    overflow-y: auto;
+    padding-bottom: 0.5rem;
+}
+
+.carrito-sidebar img {
+    width: 28px !important;
+    height: 28px !important;
+    
+}
+
+.carrito-sidebar .btn,
+.carrito-sidebar .btn-link {
+    font-size: 0.85rem;
+    padding: 0.15rem 0.3rem;
+
+}
+
+@media (max-width: 576px) {
+    .carrito-sidebar {
+        top: 0;
+        right: 0;
+        width: 80vw;
+        max-width: 95vw;
+        border-radius: 0 0 0 12px;
+        border-left: none;
+        border-top: 2px solid #42b9e4;
+    }
+}
+.carrito-header {
+    background-color: #3fb9e6 !important;
+}
+.carrito-sidebar .carrito-header {
+    border-top-left-radius: 32px !important;
+    border-top-right-radius: 0 !important;
+}

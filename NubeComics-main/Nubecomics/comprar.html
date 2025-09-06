@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - Nube Comics</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/style_carrito.css">
+  <script src="js/metodos.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+</head>
+<body>
+<main>
+  
+  <div class="container">
+    <div id="navbar-include"></div>
+        <!-- Banner arriba -->
+    <div class="container-fluid p-0 mt-3 text-center">
+      <img src="img/Logotipo/nubecomics_logotipo.webp" alt="Banner" class="img-fluid rounded-5" style="width: 35%;">
+    </div>
+</div>        
+
+<div class="container mt-5">
+  <div class="row">
+    <!-- Carrito -->
+    <div class="col-lg-8">
+  <h3 class="text-white mb-3">Cesta (<span id="carrito-cantidad">0</span>)</h3>
+      <div id="carrito-lista"></div>
+    </div>
+
+    <!-- Resumen -->
+    <div class="col-lg-4">
+      <div class="card rounded-4 p-3">
+        <h5 class="mb-3">Resumen</h5>
+        <p class="d-flex justify-content-between">
+          <span>Total estimado</span>
+          <span class="fw-bold" id="resumen-total">CLP 0</span>
+        </p>
+  <button class="btn btn-continuar w-100">Continuar</button>
+  <button id="btn-vaciar-carrito" class="btn btn-danger btn-sm w-100 mt-2">Vaciar carrito</button>
+  <hr>
+        <p class="small text-muted">✔ Entrega rápida<br>✔ Reembolso si no llega<br>✔ Pagos seguros</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recomendados -->
+  <div class="mt-5">
+    <h4 class="titulo-recomendados mb-3">Seguro que te gusta</h4>
+    <div class="row">
+      <!-- Ejemplos surtidos de productos recomendados -->
+      <div class="col-6 col-md-3 mb-3">
+        <div class="card rounded-4 overflow-hidden h-100 position-relative">
+          <button class="btn btn-agregar-recomendado" data-nombre="Tokyo Revengers #1">+</button>
+          <img src="img/Tomos/Ivrea Argentina/Tokyo Revengers/tokyo_revengers01.jpg" class="card-img-top img-recomendado" alt="Tokyo Revengers #1">
+          <div class="card-body text-center">
+            <p class="card-text fw-bold mb-1">Tokyo Revengers #1</p>
+            <span class="fw-bold text-primary">CLP 8.990</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 mb-3">
+        <div class="card rounded-4 overflow-hidden h-100 position-relative">
+          <button class="btn btn-agregar-recomendado" data-nombre="Atelier of Witch Hat #1">+</button>
+          <img src="img/Tomos/Milky Way/Atelier of Witch Hat/atelier_of_witch_hat_1.webp" class="card-img-top img-recomendado" alt="Atelier of Witch Hat #1">
+          <div class="card-body text-center">
+            <p class="card-text fw-bold mb-1">Atelier of Witch Hat #1</p>
+            <span class="fw-bold text-primary">CLP 9.990</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 mb-3">
+        <div class="card rounded-4 overflow-hidden h-100 position-relative">
+          <button class="btn btn-agregar-recomendado" data-nombre="Chainsaw Man #1">+</button>
+          <img src="img/Tomos/Norma/Chainsaw Man/chainsaw_man_01.jpg" class="card-img-top img-recomendado" alt="Chainsaw Man #1">
+          <div class="card-body text-center">
+            <p class="card-text fw-bold mb-1">Chainsaw Man #1</p>
+            <span class="fw-bold text-primary">CLP 8.990</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 mb-3">
+        <div class="card rounded-4 overflow-hidden h-100 position-relative">
+          <button class="btn btn-agregar-recomendado" data-nombre="JoJo's Bizarre Adventure, Parte 1, Phantom Blood #1">+</button>
+          <img src="img/Tomos/Ivrea España/Jojo's Bizarre Adventure/Jojos_Bizarre_Adventure_Phantom_Blood_ESP_01.webp" class="card-img-top img-recomendado" alt="JoJo's Bizarre Adventure, Parte 1, Phantom Blood #1">
+          <div class="card-body text-center">
+            <p class="card-text fw-bold mb-1">JoJo's Bizarre Adventure #1</p>
+            <span class="fw-bold text-primary">CLP 10.990</span>
+          </div>
+        </div>
+      </div>
+</script>
+</main>
+  <div id="footer-include"></div>
+<script>
+// Unifica lógica: vaciar carrito y agregar recomendados, usando solo funciones de metodos.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Garantiza que window tenga acceso a las funciones globales
+  if (typeof productosPorEditorial !== 'undefined') window.productosPorEditorial = productosPorEditorial;
+  if (typeof agregarAlCarrito !== 'undefined') window.agregarAlCarrito = agregarAlCarrito;
+  if (typeof cargarCarrito !== 'undefined') window.cargarCarrito = cargarCarrito;
+  if (typeof mostrarSidebarCarrito !== 'undefined') window.mostrarSidebarCarrito = mostrarSidebarCarrito;
+
+  // Botón para vaciar carrito
+  var btnVaciar = document.getElementById('btn-vaciar-carrito');
+  if (btnVaciar) {
+    btnVaciar.addEventListener('click', function() {
+      setTimeout(function() { // Espera a que el DOM esté listo y evita render previo
+        if (confirm('¿Seguro que quieres vaciar el carrito?')) {
+          localStorage.removeItem('carrito');
+          localStorage.removeItem('cantidades');
+          if (typeof window.cargarCarrito === 'function') window.cargarCarrito();
+          if (typeof window.mostrarSidebarCarrito === 'function') window.mostrarSidebarCarrito();
+          // Si existe el sidebar, minimizarlo y ocultarlo si queda vacío
+          var sidebar = document.getElementById('carrito-sidebar');
+          var btnMax = document.getElementById('maximizar-carrito');
+          if (sidebar) {
+            sidebar.classList.add('minimizado');
+            sidebar.style.display = 'none';
+          }
+          if (btnMax) btnMax.style.display = 'none';
+          var cant = document.getElementById('carrito-cantidad');
+          if (cant) cant.textContent = '0';
+        }
+      }, 0);
+    });
+  }
+
+  // Botones + de recomendados
+  document.querySelectorAll('.btn-agregar-recomendado').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const nombre = this.getAttribute('data-nombre');
+      let producto = null;
+      for (const key in window.productosPorEditorial || {}) {
+        producto = (window.productosPorEditorial[key] || []).find(p => p.nombre === nombre);
+        if (producto) break;
+      }
+      if (producto && typeof window.agregarAlCarrito === 'function') {
+        window.agregarAlCarrito(producto);
+      } else {
+        alert('No se pudo agregar el producto al carrito.');
+      }
+    });
+  });
+});
+</script>
+</script>
+<!---->
+</main>
+  <div id="footer-include"></div>
+</body>
+</html>
